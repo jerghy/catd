@@ -1,7 +1,7 @@
 import requests
 import time
 
-url = "https://cdn77.91p49.com//mp43/905405.mp4?st=0cd93b19448d67f916f0201874abcda4"
+url = "https://cdn77.91p49.com//mp43/905392.mp4?st=f33c04f5e7243fc8513623468c5a87c0"
 filename = "video.mp4"
 
 response = requests.get(url, stream=True)

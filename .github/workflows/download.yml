@@ -1,0 +1,36 @@
+name: 文件下载并打包为zip
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout 代码
+      uses: actions/checkout@v2
+
+    - name: 设置Python环境
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: 安装依赖
+      run: pip install requests
+
+    - name: 执行文件下载
+      run: |
+        python main.py
+
+    - name: 打包为zip
+      run: |
+        zip -r result.zip video.mp4
+
+    - name: 上传结果
+      uses: actions/upload-artifact@v2
+      with:
+        name: 下载结果
+        path: result.zip
